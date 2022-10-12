@@ -7,6 +7,9 @@ local servers = {
 	"bashls",
 	"jsonls",
 	"yamlls",
+	"gopls",
+	"phpactor",
+	"terraformls",
 }
 
 local settings = {
