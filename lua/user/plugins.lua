@@ -47,7 +47,7 @@ return packer.startup(function(use)
    -- Colorschemes (mine)
   use 'shaunsingh/nord.nvim'
   use { "EdenEast/nightfox.nvim" }
-  use { "catppuccin/nvim", as = "catppuccin" }
+ use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Dap
   use 'theHamsta/nvim-dap-virtual-text'

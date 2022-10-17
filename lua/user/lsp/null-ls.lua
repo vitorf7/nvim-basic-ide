@@ -18,7 +18,13 @@ null_ls.setup {
     },
     formatting.black.with { extra_args = { "--fast" } },
     formatting.stylua,
-    formatting.google_java_format,
-    diagnostics.flake8,
+    formatting.buf,
+    formatting.gofumpt,
+    formatting.goimports,
+    -- formatting.golines,
+    -- formatting.golines.with {
+    --   args = { "-w", "--ignore-generated", "--max-len=30" }
+    -- },
+    diagnostics.golangci_lint,
   },
 }
