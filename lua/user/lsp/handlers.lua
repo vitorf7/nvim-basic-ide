@@ -14,7 +14,7 @@ M.capabilities.textDocument.completion.completionItem.resolveSupport = {
     "additionalTextEdits",
   },
 }
-M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 local function setup_codelens_refresh(client, bufnr)
   local status_ok, codelens_supported = pcall(function()
