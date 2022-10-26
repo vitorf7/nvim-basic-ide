@@ -9,6 +9,7 @@ local servers = {
 	"yamlls",
 	"gopls",
 	"phpactor",
+  "intelephense",
 	"terraformls",
   "bufls",
   "cucumber_language_server",
