@@ -21,6 +21,7 @@ local mappings = {
 		g = { "<cmd>GoGenerate<Cr>", "Go Generate" },
 		f = { "<cmd>GoGenerate %<Cr>", "Go Generate File" },
 		c = { "<cmd>GoCmt<Cr>", "Generate Comment" },
+    l = { "<cmd>! golines % -w --base-formatter=\"gofumpt\" --ignore-generated --max-len=140<Cr><Cr>", "Golines Fix Current File" },
 	},
 }
 mappings["dT"] = { "<cmd>lua require('dap-go').debug_test()<cr>", "Debug Test" }
