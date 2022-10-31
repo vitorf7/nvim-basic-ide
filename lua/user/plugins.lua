@@ -44,7 +44,7 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins here
-   -- Colorschemes (mine)
+  -- Colorschemes (mine)
   use 'shaunsingh/nord.nvim'
   use { "EdenEast/nightfox.nvim" }
  use { "catppuccin/nvim", as = "catppuccin" }

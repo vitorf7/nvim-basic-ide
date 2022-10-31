@@ -19,7 +19,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("p", icons.git.Repo .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
 	dashboard.button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
 	dashboard.button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
-	dashboard.button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
+	dashboard.button("c", icons.ui.Gear .. " Config", ":e $MYVIMRC <CR>"),
 	dashboard.button("u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
 	dashboard.button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
 }
