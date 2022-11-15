@@ -39,3 +39,5 @@ vim.opt.shortmess:append "c"                    -- hide all the completion messa
 vim.opt.whichwrap:append("<,>,[,],h,l")         -- keys allowed to move to the previous/next line when the beginning/end of line is reached
 vim.opt.iskeyword:append("-")                   -- treats words with `-` as single words
 vim.opt.colorcolumn = "140"
+vim.opt.formatoptions:remove({ "c", "r", "o" }) -- This is a sequence of letters which describes how automatic formatting is to be done
+vim.opt.linebreak = true
