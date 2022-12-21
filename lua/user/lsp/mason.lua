@@ -15,6 +15,7 @@ local servers = {
   "cucumber_language_server",
   "dockerls",
   "marksman",
+  "dockerls",
   -- "stylua",
   -- "goimports",
   -- "gofumpt",
