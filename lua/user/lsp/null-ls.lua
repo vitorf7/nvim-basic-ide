@@ -26,5 +26,6 @@ null_ls.setup {
     --   args = { "-w", "--ignore-generated", "--max-len=30" }
     -- },
     diagnostics.golangci_lint,
+    diagnostics.hadolint,
   },
 }
