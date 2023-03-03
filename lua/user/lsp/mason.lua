@@ -16,15 +16,7 @@ local servers = {
   "dockerls",
   "marksman",
   "dockerls",
-  -- "stylua",
-  -- "goimports",
-  -- "gofumpt",
-  -- "golines",
-  -- "gotests",
-  -- "gomodifytags",
-  -- "impl",
-  -- "delve",
-  -- "markdownlint",
+  "golangci_lint_ls",
 }
 
 local settings = {

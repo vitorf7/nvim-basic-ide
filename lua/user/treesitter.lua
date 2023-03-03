@@ -15,8 +15,6 @@ configs.setup {
         "css",
         "dockerfile",
         "dot",
-        "godot_resource",
-        "gowork",
         "hcl",
         "html",
         "http",
@@ -40,10 +38,13 @@ configs.setup {
         "vim",
         "vue",
         "yaml",
+        "terraform",
         "go",
-        "gomod"
+        "godot_resource",
+        "gomod",
+        "gosum",
+        "gowork",
 	}, -- put the language you want in this array
-  ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python" }, -- put the language you want in this array
   -- ensure_installed = "all", -- one of "all" or a list of languages
   ignore_install = { "" }, -- List of parsers to ignore installing
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)

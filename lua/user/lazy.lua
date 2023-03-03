@@ -83,6 +83,7 @@ require("lazy").setup({
   { "williamboman/mason-lspconfig.nvim" },
   { "jose-elias-alvarez/null-ls.nvim" }, -- for formatters and linters
   { "RRethy/vim-illuminate" },
+  { "WhoIsSethDaniel/mason-tool-installer.nvim" },
   --
   -- { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" }, -- simple to language server installer
   -- { "neovim/nvim-lspconfig", commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda" }, -- enable LSP
