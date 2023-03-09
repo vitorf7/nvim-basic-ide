@@ -77,4 +77,12 @@ telescope.setup {
       },
     },
   },
+
+  extensions = {
+    live_grep_args = {
+      theme = "get_cursor",
+    },
+  },
 }
+
+telescope.load_extension("live_grep_args")

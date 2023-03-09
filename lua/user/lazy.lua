@@ -93,7 +93,12 @@ require("lazy").setup({
   -- { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" },
 
   -- Telescope
-  { "nvim-telescope/telescope.nvim" },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-live-grep-args.nvim"
+    },
+  },
 
   -- Treesitter
   { "nvim-treesitter/nvim-treesitter" },
