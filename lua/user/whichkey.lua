@@ -162,6 +162,7 @@ local mappings = {
   },
   s = {
     name = "Search",
+    l = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Live Grep Args" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
