@@ -26,6 +26,9 @@ require("lazy").setup({
   "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
 
+  -- JavaScript / TypeScript
+  "mxsdev/nvim-dap-vscode-js",
+
   -- Navigate between vim and tmux splits
   { "alexghergh/nvim-tmux-navigation" },
 
@@ -43,6 +46,9 @@ require("lazy").setup({
 
   -- Smooth Scrolling
   "karb94/neoscroll.nvim",
+
+  -- Codeium
+  "Exafunction/codeium.vim",
 
   { "wbthomason/packer.nvim" }, -- Have packer manage itself
   { "nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins

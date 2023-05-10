@@ -9,6 +9,7 @@ masontools.setup {
   ensure_installed = {
     -- DAP
     "delve",
+    "js-debug-adapter",
 
     -- Linter
     "buf", -- also a formatter

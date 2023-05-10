@@ -66,7 +66,7 @@ vim.api.nvim_set_hl(0, "SLFG", { fg = "#abb2bf", bg = "NONE" })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = "NONE", italic = true })
 vim.api.nvim_set_hl(0, "SLError", { fg = "#bf616a", bg = "NONE" })
 vim.api.nvim_set_hl(0, "SLWarning", { fg = "#D7BA7D", bg = "NONE" })
-vim.api.nvim_set_hl(0, "SLCopilot", { fg = "#6CC644", bg = "NONE" })
+vim.api.nvim_set_hl(0, "SLCopilot", { fg = "#6CC644", bg = gray })
 
 local hl_str = function(str, hl)
   return "%#" .. hl .. "#" .. str .. "%*"
@@ -436,6 +436,12 @@ local location = {
   padding = 0,
 }
 
+local codeium = {
+  function()
+    return hl_str(" ", "SLSep") .. hl_str('%3{codeium#GetStatusString()}', "SLCopilot") .. hl_str("", "SLSep") end,
+  padding = 0,
+}
+
 lualine.setup {
   options = {
     globalstatus = true,
@@ -455,7 +461,7 @@ lualine.setup {
     -- lualine_x = { diff, spaces, "encoding", filetype },
     -- lualine_x = { diff, lanuage_server, spaces, filetype },
     -- lualine_x = { lanuage_server, spaces, filetype },
-    lualine_x = { lanuage_server, spaces, filetype },
+    lualine_x = { lanuage_server, codeium, spaces, filetype },
     lualine_y = {},
     lualine_z = { location, progress },
   },
