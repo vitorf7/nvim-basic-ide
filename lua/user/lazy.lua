@@ -42,7 +42,7 @@ require("lazy").setup({
   { "folke/which-key.nvim" },
 
   -- LSP (mine)
-  "j-hui/fidget.nvim",
+  {"j-hui/fidget.nvim", tag = "legacy"},
 
   -- Smooth Scrolling
   "karb94/neoscroll.nvim",

@@ -25,7 +25,7 @@ null_ls.setup {
     -- formatting.golines.with {
     --   args = { "-w", "--ignore-generated", "--max-len=30" }
     -- },
-    diagnostics.golangci_lint,
+    -- diagnostics.golangci_lint,
     diagnostics.hadolint,
   },
 }
