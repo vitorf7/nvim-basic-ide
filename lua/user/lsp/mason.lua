@@ -12,6 +12,7 @@ local servers = {
 	"phpactor",
   "intelephense",
 	"terraformls",
+  "tflint",
   "bufls",
   "cucumber_language_server",
   "dockerls",
