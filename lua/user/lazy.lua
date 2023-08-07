@@ -28,6 +28,14 @@ require("lazy").setup({
 
   -- JavaScript / TypeScript
   "mxsdev/nvim-dap-vscode-js",
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+    config = function(_, opts)
+      require("typescript-tools").setup(opts)
+    end,
+  },
 
   -- Navigate between vim and tmux splits
   { "alexghergh/nvim-tmux-navigation" },
