@@ -1,12 +1,10 @@
 local M = {
   "neovim/nvim-lspconfig",
-  commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
   lazy = false,
   event = { "BufReadPre" },
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
     },
   },
 }
@@ -16,17 +14,29 @@ function M.config()
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  }
   capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
   local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
     local keymap = vim.api.nvim_buf_set_keymap
     keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    keymap(bufnr, "n", "gd", "<cmd>lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_dropdown())<CR>", opts)
     keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    keymap(bufnr, "n", "gi", "<cmd>lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_dropdown())<cr>", opts)
     keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    keymap(bufnr, "n", "glr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    keymap(bufnr, "n", "gr", "<cmd>lua require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown())<cr>", opts)
+    keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    keymap(bufnr, "n", "gca", "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown())<cr>", opts)
+    keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
     keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
     keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
     keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
@@ -37,10 +47,53 @@ function M.config()
     keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   end
 
+  local function setup_codelens_refresh(client, bufnr)
+    local status_ok, codelens_supported = pcall(function()
+      return client.supports_method "textDocument/codeLens"
+    end)
+    if not status_ok or not codelens_supported then
+      return
+    end
+    local group = "lsp_code_lens_refresh"
+    local cl_events = { "BufEnter", "BufNew", "InsertLeave" }
+    local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {
+      group = group,
+      buffer = bufnr,
+      event = cl_events,
+    })
+  
+    if ok and #cl_autocmds > 0 then
+      return
+    end
+    vim.api.nvim_create_augroup(group, { clear = false })
+    vim.api.nvim_create_autocmd(cl_events, {
+      group = group,
+      buffer = bufnr,
+      callback = vim.lsp.codelens.refresh,
+    })
+  end
+
   local lspconfig = require "lspconfig"
   local on_attach = function(client, bufnr)
+    if client.name == "tsserver" then
+      client.server_capabilities.documentFormattingProvider = false
+      vim.keymap.set("n", "<leader>lo", "<cmd>TSToolsOrganizeImports<cr>", { buffer = bufnr, desc = "Organize Imports" })
+      vim.keymap.set("n", "<leader>lO", "<cmd>TSToolsSortImports<cr>", { buffer = bufnr, desc = "Sort Imports" })
+      vim.keymap.set("n", "<leader>lu", "<cmd>TSToolsRemoveUnused<cr>", { buffer = bufnr, desc = "Removed Unused" })
+      vim.keymap.set("n", "<leader>lz", "<cmd>TSToolsGoToSourceDefinition<cr>", { buffer = bufnr, desc = "Go To Source Definition" })
+      vim.keymap.set("n", "<leader>lR", "<cmd>TSToolsRemoveUnusedImports<cr>", { buffer = bufnr, desc = "Removed Unused Imports" })
+      vim.keymap.set("n", "<leader>lF", "<cmd>TSToolsFixAll<cr>", { buffer = bufnr, desc = "Fix All" })
+      vim.keymap.set("n", "<leader>lA", "<cmd>TSToolsAddMissingImports<cr>", { buffer = bufnr, desc = "Add Missing Imports" })
+    end
+  
+    if client.name == "sumneko_lua" then
+      client.server_capabilities.documentFormattingProvider = false
+    end
+    
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
+    
+    setup_codelens_refresh(client, bufnr)
   end
 
   for _, server in pairs(require("utils").servers) do
@@ -72,7 +125,7 @@ function M.config()
 
   local config = {
     -- disable virtual text
-    virtual_text = false,
+    virtual_text = true,
     -- show signs
     signs = {
       active = signs,

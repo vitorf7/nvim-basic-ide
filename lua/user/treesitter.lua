@@ -1,12 +1,10 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  commit = "226c1475a46a2ef6d840af9caa0117a439465500",
   event = "BufReadPost",
   dependencies = {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
       event = "VeryLazy",
-      commit = "729d83ecb990dc2b30272833c213cc6d49ed5214",
     },
     {
       "nvim-tree/nvim-web-devicons",
@@ -19,7 +17,42 @@ function M.config()
   local configs = require "nvim-treesitter.configs"
 
   configs.setup {
-    ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python" }, -- put the language you want in this array
+    ensure_installed = {
+      "bash",
+      "cmake",
+      "css",
+      "dockerfile",
+      "dot",
+      "hcl",
+      "html",
+      "http",
+      "javascript",
+      "json",
+      "json5",
+      "lua",
+      "make",
+      "markdown",
+      "markdown_inline",
+      "php",
+      "phpdoc",
+      "proto",
+      "python",
+      "query",
+      "scss",
+      "sql",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "vue",
+      "yaml",
+      "terraform",
+      "go",
+      "godot_resource",
+      "gomod",
+      "gosum",
+      "gowork",
+    }, -- put the language you want in this array
     -- ensure_installed = "all", -- one of "all" or a list of languages
     ignore_install = { "" },                                                       -- List of parsers to ignore installing
     sync_install = false,                                                          -- install languages synchronously (only applied to `ensure_installed`)
