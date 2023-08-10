@@ -1,9 +1,8 @@
 local M = {
-    "moll/vim-bbye",
-    lazy = false,
+	"moll/vim-bbye",
+	lazy = false,
 }
 
-function M.config()
-end
+function M.config() end
 
 return M

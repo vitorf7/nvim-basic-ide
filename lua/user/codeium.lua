@@ -1,9 +1,8 @@
 local M = {
-    "Exafunction/codeium.vim",
-    lazy = false,
+	"Exafunction/codeium.vim",
+	lazy = false,
 }
 
-function M.config()
-end
+function M.config() end
 
 return M

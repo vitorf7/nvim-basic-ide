@@ -1,9 +1,8 @@
 local M = {
-  "stevearc/dressing.nvim",
-  lazy = false,
+	"stevearc/dressing.nvim",
+	lazy = false,
 }
 
-function M.config()
-end
+function M.config() end
 
 return M

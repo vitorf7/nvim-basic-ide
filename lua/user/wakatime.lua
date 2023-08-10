@@ -1,9 +1,8 @@
 local M = {
-    "wakatime/vim-wakatime",
-    lazy = false,
+	"wakatime/vim-wakatime",
+	lazy = false,
 }
 
-function M.config()
-end
+function M.config() end
 
 return M
