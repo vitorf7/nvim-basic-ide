@@ -16,12 +16,31 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 
 -- load lazy
 require("lazy").setup("user", {
-	install = { colorscheme = { require("user.colorscheme").name } },
+	install = {
+		missing = true,
+		colorscheme = { require("user.colorscheme").name },
+	},
 	defaults = { lazy = true },
-	ui = { wrap = "true" },
-	change_detection = { enabled = true },
+	ui = {
+		wrap = "true",
+		border = "rounded",
+	},
+	checker = {
+		enabled = false,
+		concurrency = nil, ---@type number? set to 1 to check for updates very slowly
+		notify = true, -- get a notification when new updates are found
+		frequency = 3600, -- check for updates every hour
+	},
+	change_detection = {
+		enabled = true,
+		notify = false, -- get a notification when changes are found
+	},
 	debug = false,
 	performance = {
+		cache = {
+			enabled = true,
+		},
+		reset_packpath = true, -- reset the package path to improve startup time
 		rtp = {
 			disabled_plugins = {
 				-- "gzip", -- Plugin for editing compressed files.
@@ -35,4 +54,11 @@ require("lazy").setup("user", {
 			},
 		},
 	},
+	readme = {
+		enabled = true,
+		root = vim.fn.stdpath("state") .. "/lazy/readme",
+		files = { "README.md", "lua/**/README.md" },
+		skip_if_doc_exists = true,
+	},
+	state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
 })
