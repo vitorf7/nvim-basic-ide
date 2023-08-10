@@ -1,6 +1,10 @@
-local dap_ok, dapgo = pcall(require, "dap-go")
-if not dap_ok then
-  return
+local M = {
+	"leoluz/nvim-dap-go",
+	event = "VeryLazy",
+}
+
+function M.config()
+	require("dap-go").setup()
 end
 
-dapgo.setup()
+return M

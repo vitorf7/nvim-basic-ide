@@ -1,8 +1,12 @@
-local status_ok, notify = pcall(require, "notify")
-if not status_ok then
-  return
+local M = {
+	"rcarriga/nvim-notify",
+	lazy = false,
+}
+
+function M.config()
+	require("notify").setup({
+		stages = "slide",
+	})
 end
 
-notify.setup({
-  stages = "slide",
-})
+return M

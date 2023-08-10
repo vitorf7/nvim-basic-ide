@@ -1,8 +1,18 @@
-local colorscheme = "catppuccin"
+local M = {
+	"catppuccin/nvim",
+	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	priority = 1000, -- make sure to load this before all the other start plugins
+}
 
-local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
-if not status_ok then
-  return
+M.name = "catppuccin"
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+function M.config()
+	local status_ok, _ = pcall(vim.cmd.colorscheme, M.name)
+	if not status_ok then
+		return
+	end
+
+	require("catppuccin").setup()
 end
 
-require "user.themes.catppuccin"
+return M

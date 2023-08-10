@@ -1,6 +1,11 @@
-local status_ok, fidget = pcall(require, "fidget")
-if not status_ok then
-  return
+local M = {
+	"j-hui/fidget.nvim",
+	tag = "legacy",
+	lazy = false,
+}
+
+function M.config()
+	require("fidget").setup()
 end
 
-fidget.setup()
+return M
