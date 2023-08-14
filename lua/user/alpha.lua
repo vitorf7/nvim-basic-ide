@@ -4,7 +4,6 @@ local M = {
 }
 
 function M.config()
-	local icons = require("ui").icons()
 	local alpha = require("alpha")
 	local dashboard = require("alpha.themes.dashboard")
 	dashboard.section.header.val = {
@@ -16,18 +15,15 @@ function M.config()
 		[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 	}
 	dashboard.section.buttons.val = {
-		dashboard.button("f", icons.documents.Files .. " Find file", ":Telescope find_files <CR>"),
-		dashboard.button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-		dashboard.button(
-			"p",
-			icons.git.Repo .. " Find project",
-			":lua require('telescope').extensions.projects.projects()<CR>"
-		),
-		dashboard.button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
-		dashboard.button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
-		dashboard.button("c", icons.ui.Gear .. " Config", ":e $MYVIMRC <CR>"),
-		dashboard.button("u", icons.ui.CloudDownload .. " Update", ":Lazy<CR>"),
-		dashboard.button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
+    dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
+    dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
+    dashboard.button("p", " " .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
+    dashboard.button("r", "󰄉 " .. " Recent files", ":Telescope oldfiles <CR>"),
+    dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
+    dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
+		dashboard.button("u", " " .. " Update Lazy Plugins", ":Lazy<CR>"),
+		dashboard.button("u", " " .. " Update Mason", ":MasonCR>"),
+    dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 	}
 	local function footer()
 		return "Lord Vitor Faiante"

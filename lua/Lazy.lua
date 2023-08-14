@@ -20,7 +20,9 @@ require("lazy").setup("user", {
 		missing = true,
 		colorscheme = { require("user.colorscheme").name },
 	},
-	defaults = { lazy = true },
+	defaults = {
+		lazy = false,
+	},
 	ui = {
 		wrap = "true",
 		border = "rounded",

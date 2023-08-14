@@ -11,6 +11,7 @@ function M.config()
 			-- DAP
 			"delve",
 			"js-debug-adapter",
+			"php-debug-adapter",
 
 			-- Linter
 			"buf", -- also a formatter
@@ -20,6 +21,8 @@ function M.config()
 			"phpcs",
 			"tflint",
 			"yamllint",
+			"golangci-lint",
+			"jsonlint",
 
 			-- Formatter
 			"gofumpt",
@@ -28,12 +31,16 @@ function M.config()
 			"prettier",
 			"stylua",
 			"yamlfmt",
+			"black",
+			"php-cs-fixer",
+			"ts-standard",
 
 			-- Other tools
 			"gotests",
 			"gomodifytags",
 			"iferr",
 			"impl",
+			"gotestsum",
 		},
 		-- if set to true this will check each tool for updates. If updates
 		-- are available the tool will be updated. This setting does not
