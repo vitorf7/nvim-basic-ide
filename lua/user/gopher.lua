@@ -1,6 +1,5 @@
 local M = {
 	"olexsmir/gopher.nvim",
-	lazy = false,
 }
 
 function M.config()
