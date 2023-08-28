@@ -21,8 +21,8 @@ function M.config()
     dashboard.button("r", "󰄉 " .. " Recent files", ":Telescope oldfiles <CR>"),
     dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
     dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-		dashboard.button("u", " " .. " Update Lazy Plugins", ":Lazy<CR>"),
-		dashboard.button("u", " " .. " Update Mason", ":MasonCR>"),
+		dashboard.button("l", " " .. " Update Lazy Plugins", ":Lazy<CR>"),
+		dashboard.button("u", " " .. " Update Mason", ":Mason<CR>"),
     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 	}
 	local function footer()
