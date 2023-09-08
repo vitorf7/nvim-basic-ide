@@ -7,6 +7,7 @@ local M = {
 			"ahmedkhalf/project.nvim",
 			"nvim-telescope/telescope-live-grep-args.nvim",
 			"nvim-telescope/telescope-dap.nvim",
+			"rcarriga/nvim-notify",
 		},
 	},
 }
@@ -96,6 +97,7 @@ function M.config()
 	})
 
 	telescope.load_extension("live_grep_args")
+  telescope.load_extension("notify")
 end
 
 return M

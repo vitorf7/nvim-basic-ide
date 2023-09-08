@@ -43,3 +43,5 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- This is a sequence of letters
 vim.opt.linebreak = true
 vim.opt.colorcolumn="80,140"
 vim.loader.enable()
+local opt = vim.opt
+opt.winbar = "%{%v:lua.require'config.winbar'.get_winbar()%}"

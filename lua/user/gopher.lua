@@ -5,6 +5,7 @@ local M = {
 function M.config()
 	require("gopher").setup({
 		commands = {
+      dlv = "dlv",
 			go = "go",
 			gomodifytags = "gomodifytags",
 			gotests = "gotests",

@@ -1,6 +1,14 @@
 local M = {
 	"folke/which-key.nvim",
-	event = "VeryLazy",
+	event = "VimEnter",
+	opts = {
+		defaults = {
+			["t"] = { desc = "+Test" },
+		},
+	},
+	dependencies = {
+		"nvim-neotest/neotest",
+	},
 }
 
 function M.config()
@@ -85,7 +93,14 @@ function M.config()
 			"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 			"Buffers",
 		},
-		["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+		-- ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+		["e"] = {
+      function()
+        -- require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        require("neo-tree.command").execute({ toggle = true })
+      end,
+      "Explorer",
+    },
 		["w"] = { "<cmd>w!<CR>", "Save" },
 		["q"] = { "<cmd>q!<CR>", "Quit" },
 		["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
@@ -174,7 +189,7 @@ function M.config()
 			C = { "<cmd>Telescope commands<cr>", "Commands" },
 		},
 
-		t = {
+		T = {
 			name = "Terminal",
 			n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
 			u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },

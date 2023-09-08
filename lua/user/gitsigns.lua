@@ -1,6 +1,5 @@
 local M = {
 	"lewis6991/gitsigns.nvim",
-	event = "BufReadPre",
 }
 
 M.opts = {
@@ -20,8 +19,10 @@ M.opts = {
 	current_line_blame_opts = {
 		virt_text = true,
 		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-		delay = 1000,
+		delay = 500,
 	},
+	current_line_blame = true,
+	current_line_blame_formatter = "<author>, <abbrev_sha> <author_time:%y-%m-%d> - <summary>",
 	sign_priority = 6,
 	update_debounce = 100,
 	status_formatter = nil, -- Use default
@@ -34,5 +35,9 @@ M.opts = {
 		col = 1,
 	},
 }
+
+function M.config()
+	require("gitsigns").setup(M.opts)
+end
 
 return M

@@ -8,6 +8,20 @@ local M = {
 		{
 			"olexsmir/gopher.nvim",
 		},
+		{ "folke/neodev.nvim", opts = {} },
+		{
+			"SmiteshP/nvim-navbuddy",
+			dependencies = {
+				{
+					"SmiteshP/nvim-navic",
+				},
+				"MunifTanjim/nui.nvim",
+			},
+			opts = { lsp = { auto_attach = true } },
+		},
+	},
+	keys = {
+		{ "<leader>ln", "<cmd>Navbuddy<CR>", desc = "Navbuddy" },
 	},
 }
 
@@ -135,11 +149,20 @@ function M.on_attach(client, bufnr)
 
 	lsp_keymaps(bufnr)
 	require("illuminate").on_attach(client)
+	-- nvim-navic
+	if client.server_capabilities.documentSymbolProvider then
+		local navic = require("nvim-navic")
+		navic.attach(client, bufnr)
+	end
 
 	setup_codelens_refresh(client, bufnr)
 end
 
 function M.config()
+	require("neodev").setup({
+		library = { plugins = { "neotest" }, types = true },
+	})
+
 	local lspconfig = require("lspconfig")
 
 	for _, server in pairs(require("utils").servers) do
